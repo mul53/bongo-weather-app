@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon",
+    "lint:server": "eslint ./server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -19,6 +20,9 @@
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "babel-loader": "^8.0.5",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
     "nodemon": "^1.18.11",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.0",
