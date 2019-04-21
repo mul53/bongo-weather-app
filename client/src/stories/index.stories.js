@@ -8,8 +8,8 @@ import { Button, Welcome } from '@storybook/react/demo';
 
 import 'antd/dist/antd.css';
 import './index.stories.css';
-import { Row, Col } from 'antd';
 import MiniCard from '../components/miniCard';
+import LargeCard from '../components/largeCard';
 import WeatherIcon from '../components/weatherIcon';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
@@ -24,14 +24,16 @@ storiesOf('Button', module)
     </Button>
   ));
 
+storiesOf('LargeCard', module)
+  .add('default', () => (
+    <LargeCard />
+  ));
+
+
 storiesOf('MiniCard', module)
   .add('default', () => (
     <div>
-      <Row gutter={16}>
-        <Col span={6}>
-          <MiniCard />
-        </Col>
-      </Row>
+      <MiniCard />
     </div>
   ));
 

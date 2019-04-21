@@ -22,6 +22,21 @@ module.exports = {
         use: [
           'babel-loader'
         ]
+      },
+      {
+        test: /\.(png|jpg|svg|gif|ttf|woff)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[hash].[ext]'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   }, plugins: [

@@ -25,7 +25,9 @@ const getIcon = (name) => {
   }
 };
 
-const WeatherIcon = ({ name, width }) => <Icon src={getIcon(name)} width={width} />;
+const WeatherIcon = ({ name, width, ...otherProps }) => (
+  <Icon src={getIcon(name)} width={width} {...otherProps} />
+);
 
 WeatherIcon.defaultProps = {
   width: '180px',
