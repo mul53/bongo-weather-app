@@ -6,7 +6,9 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
 
+import 'antd/dist/antd.css';
 import './index.stories.css';
+import { Row, Col } from 'antd';
 import MiniCard from '../components/miniCard';
 import WeatherIcon from '../components/weatherIcon';
 
@@ -23,7 +25,15 @@ storiesOf('Button', module)
   ));
 
 storiesOf('MiniCard', module)
-  .add('default', () => <MiniCard />);
+  .add('default', () => (
+    <div>
+      <Row gutter={16}>
+        <Col span={6}>
+          <MiniCard />
+        </Col>
+      </Row>
+    </div>
+  ));
 
 storiesOf('WeatherIcon', module)
   .add('Cloudy Icon', () => <WeatherIcon name="cloudy" />)

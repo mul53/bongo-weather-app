@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import minArrow from '../images/Min_Arrow.png';
 import WeatherIcon from './weatherIcon';
+import Icon from './icon';
 
 const MiniCard = () => (
   <CardWrapper>
@@ -15,20 +15,20 @@ const MiniCard = () => (
       <Description>cloudy</Description>
       <CardRow>
         <MiniTemp>
-          <img src={minArrow} alt="min arrow" />
+          <Icon name="min-arrow" />
           <MiniTempValue>
             -18
           </MiniTempValue>
-          <MiniTempLabel>
+          <MiniTempLabel color="#00ff9f">
             Min
           </MiniTempLabel>
         </MiniTemp>
         <MiniTemp>
-          <img src={minArrow} alt="max arrow" />
+          <Icon name="max-arrow" />
           <MiniTempValue>
             25
           </MiniTempValue>
-          <MiniTempLabel>
+          <MiniTempLabel color="#ff0000">
             Max
           </MiniTempLabel>
         </MiniTemp>
@@ -44,6 +44,7 @@ padding: 20px;
 box-shadow: 0 0 30px rgba(0, 17, 255, 0.1);
 background-color: #ffffff;
 border-radius: 20px;
+color: #020202;
 line-height: 1;
 `;
 
@@ -51,7 +52,6 @@ const CardHeader = styled.div`
 text-align: center;
 text-transform: uppercase;
 letter-spacing: 3px;
-color: #020202;
 margin-bottom: 30px;
 `;
 
@@ -62,7 +62,7 @@ align-items: center;
 `;
 
 const MainTemp = styled.h1`
-font-size: 64px;
+font-size: 60px;
 font-weight: 500;
 margin: 0px;
 margin-bottom: 20px;
@@ -91,7 +91,7 @@ padding: 5px 0;
 `;
 
 const MiniTempLabel = styled.div`
-color: #ff0000;
+color: ${({ color }) => color};
 `;
 
 export default MiniCard;
