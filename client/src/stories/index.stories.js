@@ -6,6 +6,10 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
 
+import './index.stories.css';
+import MiniCard from '../components/miniCard';
+import WeatherIcon from '../components/weatherIcon';
+
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 storiesOf('Button', module)
@@ -17,3 +21,13 @@ storiesOf('Button', module)
       </span>
     </Button>
   ));
+
+storiesOf('MiniCard', module)
+  .add('default', () => <MiniCard />);
+
+storiesOf('WeatherIcon', module)
+  .add('Cloudy Icon', () => <WeatherIcon name="cloudy" />)
+  .add('Rain Icon', () => <WeatherIcon name="rain" />)
+  .add('Snow Icon', () => <WeatherIcon name="snow" />)
+  .add('Storm Icon', () => <WeatherIcon name="storm" />)
+  .add('Sun Icon', () => <WeatherIcon name="sun" />);
