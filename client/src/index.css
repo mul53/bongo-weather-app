@@ -4,7 +4,7 @@
 font-family: 'Segoe UI Light';
 font-style: normal;
 font-weight: normal;
-src: url('fonts/Segoe UI Light.ttf');
+src: url('fonts/Segoe UI Light.woff') format('woff');
 }
 
 @font-face {
@@ -13,6 +13,13 @@ font-style: normal;
 font-weight: normal;
 src: local('Segoe UI Regular'), url('fonts/Segoe UI.woff') format('woff');
 }
+
+@font-face {
+  font-family: 'Segoe UI SemiBold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Segoe UI SemiBold'), url('fonts/Segoe UI SemiBold.woff') format('woff');
+  }
 
 
 @font-face {
