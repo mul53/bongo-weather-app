@@ -12,7 +12,7 @@ const App = () => (
     </nav>
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/detail" component={CardDetail} />
+      <Route path="/location/:city" component={CardDetail} />
     </Switch>
   </div>
 );

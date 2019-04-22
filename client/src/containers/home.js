@@ -10,7 +10,7 @@ const Home = () => (
   <Content style={{ padding: '0 50px' }}>
     <Row gutter="30">
       <Col span="6">
-        <Link to="/detail">
+        <Link to="/location/new_york">
           <MiniCard />
         </Link>
       </Col>
