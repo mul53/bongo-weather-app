@@ -10,7 +10,7 @@ const LargeCard = () => (
       <Row gutter="16" type="flex" align="middle">
         <Col span="12">
           <LeftCol>
-            <WeatherIcon name="cloudy" />
+            <WeatherIcon name="cloudy" width="140px" />
             <div style={{ paddingLeft: '10px' }}>
               <MainTemp>
                 15&deg;
@@ -112,7 +112,7 @@ const LargeCard = () => (
 
 const Rectangle = styled.div`
 width: 90px;
-height: 6px;
+height: 3px;
 border-radius: 90px;
 background-color: #ffffff;
 `;
@@ -135,21 +135,21 @@ text-align: center;
 `;
 
 const DayTempDay = styled.div`
-font-family: "Segoe UI Regular";
-font-size: 26px;
+font-family: "Segoe UI SemiBold";
+font-size: 22px;
 color: #707070;
 margin-bottom: 10px;
 text-transform: uppercase;
 `;
 
 const DayTempValue = styled.div`
-font-family: "Segoe UI Regular";
 font-size: 30px;
 color: #371662;
 margin-bottom: 10px;
 `;
 
 const DayTempDescription = styled.div`
+font-family: "Segoe UI SemiBold";
 letter-spacing: 3px;
 color: #371662;
 text-transform: uppercase;
@@ -164,7 +164,7 @@ border-radius: 10px;
 `;
 
 const CardHeader = styled.div`
-padding: 80px 40px;
+padding: 40px;
 border-top-left-radius: 20px;
 border-top-right-radius: 20px;
 background: rgb(133,133,255);
@@ -184,18 +184,21 @@ flex-direction: column;
 `;
 
 const MainTemp = styled.div`
-font-size: 85px;
+font-family: "Segoe UI SemiBold";
+font-size: 60px;
 letter-spacing: 9.5px;
 `;
 
 const MainDescription = styled.div`
-font-size: 30px;
+font-family: "Segoe UI SemiBold";
+font-size: 24px;
 letter-spacing: 3px;
 `;
 
 const Location = styled.div`
+font-family: "Segoe UI SemiBold";
 text-align: center;
-font-size: 35px;
+font-size: 26px;
 letter-spacing: 3px;
 margin-bottom: 10px;
 text-transform: uppercase;
