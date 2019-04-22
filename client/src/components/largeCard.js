@@ -11,7 +11,7 @@ const LargeCard = () => (
         <Col span="12">
           <LeftCol>
             <WeatherIcon name="cloudy" width="140px" />
-            <div style={{ paddingLeft: '10px' }}>
+            <div style={{ paddingLeft: '30px' }}>
               <MainTemp>
                 15&deg;
               </MainTemp>
@@ -39,7 +39,7 @@ const LargeCard = () => (
               <DayTempDay>
                 Mon
               </DayTempDay>
-              <WeatherIcon style={{ marginBottom: '10px' }} name="rain" height="80px" width="auto" />
+              <WeatherIcon style={{ marginBottom: '10px' }} name="rain" height="65px" width="auto" />
               <DayTempValue>
                 9&deg;
               </DayTempValue>
@@ -53,7 +53,7 @@ const LargeCard = () => (
               <DayTempDay>
                 tue
               </DayTempDay>
-              <WeatherIcon name="sun" height="80px" width="auto" style={{ marginBottom: '10px' }} />
+              <WeatherIcon name="sun" height="65px" width="auto" style={{ marginBottom: '10px' }} />
               <DayTempValue>
                 15&deg;
               </DayTempValue>
@@ -67,7 +67,7 @@ const LargeCard = () => (
               <DayTempDay>
                 wed
               </DayTempDay>
-              <WeatherIcon name="cloudy" height="80px" width="auto" style={{ marginBottom: '10px' }} />
+              <WeatherIcon name="cloudy" height="65px" width="auto" style={{ marginBottom: '10px' }} />
               <DayTempValue>
                 11&deg;
               </DayTempValue>
@@ -81,7 +81,7 @@ const LargeCard = () => (
               <DayTempDay>
                 thu
               </DayTempDay>
-              <WeatherIcon name="storm" height="80px" width="auto" style={{ marginBottom: '10px' }} />
+              <WeatherIcon name="storm" height="65px" width="auto" style={{ marginBottom: '10px' }} />
               <DayTempValue>
                 7&deg;
               </DayTempValue>
@@ -95,7 +95,7 @@ const LargeCard = () => (
               <DayTempDay>
                 Fri
               </DayTempDay>
-              <WeatherIcon name="snow" height="80px" width="auto" style={{ marginBottom: '10px' }} />
+              <WeatherIcon name="snow" height="65px" width="auto" style={{ marginBottom: '10px' }} />
               <DayTempValue>
                 -18&deg;
               </DayTempValue>
@@ -111,8 +111,8 @@ const LargeCard = () => (
 );
 
 const Rectangle = styled.div`
-width: 90px;
-height: 3px;
+width: 60px;
+height: 6px;
 border-radius: 90px;
 background-color: #ffffff;
 `;
@@ -149,7 +149,7 @@ margin-bottom: 10px;
 `;
 
 const DayTempDescription = styled.div`
-font-family: "Segoe UI SemiBold";
+font-size: 14px;
 letter-spacing: 3px;
 color: #371662;
 text-transform: uppercase;
@@ -174,6 +174,8 @@ background: linear-gradient(180deg, rgba(133,133,255,.75) 0%, rgba(255,255,255,.
 const LeftCol = styled.div`
 display: flex;
 justify-content: center;
+align-items: center;
+line-height: 1;
 `;
 
 const RightCol = styled.div`
@@ -184,15 +186,16 @@ flex-direction: column;
 `;
 
 const MainTemp = styled.div`
-font-family: "Segoe UI SemiBold";
-font-size: 60px;
-letter-spacing: 9.5px;
+font-family: "Segoe UI Regular";
+font-size: 65px;
+letter-spacing: 8px;
+margin-bottom: 5px;
 `;
 
 const MainDescription = styled.div`
-font-family: "Segoe UI SemiBold";
-font-size: 24px;
+font-size: 20px;
 letter-spacing: 3px;
+text-transform: uppercase;
 `;
 
 const Location = styled.div`
