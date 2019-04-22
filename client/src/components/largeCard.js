@@ -3,112 +3,74 @@ import styled from 'styled-components';
 import { Row, Col } from 'antd';
 
 import WeatherIcon from './weatherIcon';
+import iconHelper from '../util/iconHelper';
 
-const LargeCard = () => (
-  <CardWrapper>
-    <CardHeader>
-      <Row gutter="16" type="flex" align="middle">
-        <Col span="12">
-          <LeftCol>
-            <WeatherIcon name="cloudy" width="140px" />
-            <div style={{ paddingLeft: '30px' }}>
-              <MainTemp>
-                15&deg;
-              </MainTemp>
-              <MainDescription>
-                cloudy
-              </MainDescription>
-            </div>
-          </LeftCol>
-        </Col>
-        <Col span="12">
-          <RightCol>
-            <Location>
-              moscow
-            </Location>
-            <Rectangle />
-          </RightCol>
-        </Col>
-      </Row>
-    </CardHeader>
-    <CardBody>
-      <FiveDayTemp>
-        <Row gutter="16" type="flex" justify="center">
-          <Col span="4">
-            <DayTemp>
-              <DayTempDay>
-                Mon
-              </DayTempDay>
-              <WeatherIcon style={{ marginBottom: '10px' }} name="rain" height="65px" width="auto" />
-              <DayTempValue>
-                9&deg;
-              </DayTempValue>
-              <DayTempDescription>
-                raining
-              </DayTempDescription>
-            </DayTemp>
+const LargeCard = ({ name, dailyData }) => {
+  const [current, ...forecast] = dailyData;
+  const { mainTemp, description } = current;
+
+  const dailyCards = forecast.map((
+    {
+      day,
+      mainTemp: dailyMainTemp,
+      description: dailyDescription,
+    },
+  ) => (
+    <Col span="4">
+      <DayTemp>
+        <DayTempDay>
+          { day }
+        </DayTempDay>
+        <WeatherIcon style={{ marginBottom: '10px' }} name={iconHelper(dailyDescription)} height="65px" width="auto" />
+        <DayTempValue>
+          {dailyMainTemp}
+&deg;
+        </DayTempValue>
+        <DayTempDescription>
+          { dailyDescription }
+        </DayTempDescription>
+      </DayTemp>
+    </Col>
+  ));
+
+  return (
+    <CardWrapper>
+      <CardHeader>
+        <Row gutter="16" type="flex" align="middle">
+          <Col span="12">
+            <LeftCol>
+              <WeatherIcon name={iconHelper(description)} width="140px" />
+              <div style={{ paddingLeft: '30px' }}>
+                <MainTemp>
+                  { mainTemp }
+&deg;
+                </MainTemp>
+                <MainDescription>
+                  { description }
+                </MainDescription>
+              </div>
+            </LeftCol>
           </Col>
-          <Col span="4">
-            <DayTemp>
-              <DayTempDay>
-                tue
-              </DayTempDay>
-              <WeatherIcon name="sun" height="65px" width="auto" style={{ marginBottom: '10px' }} />
-              <DayTempValue>
-                15&deg;
-              </DayTempValue>
-              <DayTempDescription>
-                sunny
-              </DayTempDescription>
-            </DayTemp>
-          </Col>
-          <Col span="4">
-            <DayTemp>
-              <DayTempDay>
-                wed
-              </DayTempDay>
-              <WeatherIcon name="cloudy" height="65px" width="auto" style={{ marginBottom: '10px' }} />
-              <DayTempValue>
-                11&deg;
-              </DayTempValue>
-              <DayTempDescription>
-                cloudy
-              </DayTempDescription>
-            </DayTemp>
-          </Col>
-          <Col span="4">
-            <DayTemp>
-              <DayTempDay>
-                thu
-              </DayTempDay>
-              <WeatherIcon name="storm" height="65px" width="auto" style={{ marginBottom: '10px' }} />
-              <DayTempValue>
-                7&deg;
-              </DayTempValue>
-              <DayTempDescription>
-                storm
-              </DayTempDescription>
-            </DayTemp>
-          </Col>
-          <Col span="4">
-            <DayTemp>
-              <DayTempDay>
-                Fri
-              </DayTempDay>
-              <WeatherIcon name="snow" height="65px" width="auto" style={{ marginBottom: '10px' }} />
-              <DayTempValue>
-                -18&deg;
-              </DayTempValue>
-              <DayTempDescription>
-                snowing
-              </DayTempDescription>
-            </DayTemp>
+          <Col span="12">
+            <RightCol>
+              <Location>
+                { name }
+              </Location>
+              <Rectangle />
+            </RightCol>
           </Col>
         </Row>
-      </FiveDayTemp>
-    </CardBody>
-  </CardWrapper>
-);
+      </CardHeader>
+      <CardBody>
+        <FiveDayTemp>
+          <Row gutter="16" type="flex" justify="center">
+            { dailyCards }
+          </Row>
+        </FiveDayTemp>
+      </CardBody>
+    </CardWrapper>
+  );
+};
 
 const Rectangle = styled.div`
 width: 60px;

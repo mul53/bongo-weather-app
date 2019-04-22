@@ -3,41 +3,51 @@ import styled from 'styled-components';
 
 import WeatherIcon from './weatherIcon';
 import Icon from './icon';
+import iconHelper from '../util/iconHelper';
 
-const MiniCard = () => (
-  <CardWrapper>
-    <CardHeader>
-      tunisia
-    </CardHeader>
-    <CardBody>
-      <WeatherIcon name="cloudy" />
-      <MainTemp>20&deg;</MainTemp>
-      <Description>cloudy</Description>
-      <CardRow>
-        <MiniTemp>
-          <Icon name="min-arrow" />
-          <MiniTempValue>
-            -18
-          </MiniTempValue>
-          <MiniTempLabel color="#00ff9f">
+const MiniCard = ({
+  city, description, mainTemp, minTemp, maxTemp,
+}) => {
+  const iconName = iconHelper(description);
+
+  return (
+    <CardWrapper>
+      <CardHeader>
+        { city }
+      </CardHeader>
+      <CardBody>
+        <WeatherIcon name={iconName} height="180px" width="auto" />
+        <MainTemp>
+          { mainTemp }
+&deg;
+        </MainTemp>
+        <Description>{ description }</Description>
+        <CardRow>
+          <MiniTemp>
+            <Icon name="min-arrow" />
+            <MiniTempValue>
+              { minTemp }
+            </MiniTempValue>
+            <MiniTempLabel color="#00ff9f">
             Min
-          </MiniTempLabel>
-        </MiniTemp>
-        <MiniTemp>
-          <Icon name="max-arrow" />
-          <MiniTempValue>
-            25
-          </MiniTempValue>
-          <MiniTempLabel color="#ff0000">
+            </MiniTempLabel>
+          </MiniTemp>
+          <MiniTemp>
+            <Icon name="max-arrow" />
+            <MiniTempValue>
+              { maxTemp }
+            </MiniTempValue>
+            <MiniTempLabel color="#ff0000">
             Max
-          </MiniTempLabel>
-        </MiniTemp>
-      </CardRow>
-    </CardBody>
-  </CardWrapper>
-);
+            </MiniTempLabel>
+          </MiniTemp>
+        </CardRow>
+      </CardBody>
+    </CardWrapper>
+  );
+};
 
-const CardWrapper = styled.div`
+export const CardWrapper = styled.div`
 font-family: "Segoe UI Light";
 font-size: 16px;
 padding: 20px;
@@ -46,16 +56,17 @@ background-color: #ffffff;
 border-radius: 20px;
 color: #020202;
 line-height: 1;
+height: 480px;
 `;
 
-const CardHeader = styled.div`
+export const CardHeader = styled.div`
 text-align: center;
 text-transform: uppercase;
 letter-spacing: 3px;
 margin-bottom: 30px;
 `;
 
-const CardBody = styled.div`
+export const CardBody = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;

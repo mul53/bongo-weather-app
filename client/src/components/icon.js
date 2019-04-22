@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import maxArrow from '../images/Max_Arrow.png';
-import minArrow from '../images/Min_Arrow.png';
+import maxArrow from '../images/Max_Arrow.svg';
+import minArrow from '../images/Min_Arrow.svg';
 
 const getIcon = (name) => {
   switch (name) {
