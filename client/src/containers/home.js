@@ -8,6 +8,7 @@ import AddCard from '../components/addCard';
 import Search from './search';
 import { toggleSearchUI as toggleSearchUIAction } from '../actions/searchActionCreators';
 import { addCity as addCityAction } from '../actions/cityActionCreators';
+import { weatherForecast } from '../api/weatherApi';
 
 const { Content } = Layout;
 
@@ -21,7 +22,7 @@ class Home extends Component {
     try {
       const { addCity, cities } = this.props;
       if (cities.length < 1) {
-        const response = await fetch('http://api.openweathermap.org/data/2.5/forecast?q=new york&units=metric&appid=849648ec9f395dbb3891efabbf3f3070');
+        const response = await weatherForecast('Lusaka');
         const jsonData = await response.json();
 
         const { list, city, weather } = jsonData;

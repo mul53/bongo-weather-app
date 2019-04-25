@@ -69,6 +69,7 @@ class CardDetail extends Component {
 
 const Main = styled.div`
 display: flex;
+justify-content: center;
 `;
 
 const Button = styled.button`

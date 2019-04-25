@@ -36,8 +36,8 @@ const LargeCard = ({ name, dailyData }) => {
   return (
     <CardWrapper>
       <CardHeader>
-        <Row gutter="16" type="flex" align="middle">
-          <Col span="12">
+        <Row gutter="16" type="flex" align="middle" justify="center">
+          <Col span="14">
             <LeftCol>
               <WeatherIcon name={iconHelper(description)} width="auto" height="140px" />
               <div style={{ paddingLeft: '30px' }}>
@@ -51,7 +51,7 @@ const LargeCard = ({ name, dailyData }) => {
               </div>
             </LeftCol>
           </Col>
-          <Col span="12">
+          <Col span="10">
             <RightCol>
               <Location>
                 { name }
