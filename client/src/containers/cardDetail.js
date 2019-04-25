@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
+import styled from 'styled-components';
 
 import LargeCard from '../components/largeCard';
 import filterWeatherData from '../util/dataFilter';
+
+import ArrowIcon from '../images/Group_29.svg';
 
 const { Content } = Layout;
 
@@ -12,6 +15,7 @@ class CardDetail extends Component {
     this.state = {
       city: {},
     };
+    this.goBack = this.goBack.bind(this);
   }
 
   async componentDidMount() {
@@ -42,15 +46,45 @@ class CardDetail extends Component {
     }
   }
 
+  goBack() {
+    this.props.history.goBack();
+  }
+
   render() {
     const { city } = this.state;
     const { name, dailyData } = city;
     return (
-      <Content style={{ padding: '0 200px' }}>
-        {dailyData && <LargeCard dailyData={dailyData} name={name} />}
+      <Content style={{ padding: '0 100px' }}>
+        {dailyData
+          && (
+          <Main>
+            <Button onClick={this.goBack} />
+            <LargeCard dailyData={dailyData} name={name} />
+          </Main>
+          )}
       </Content>
     );
   }
 }
+
+const Main = styled.div`
+display: flex;
+`;
+
+const Button = styled.button`
+width: 70px;
+height: 70px;
+background-color: #542c85;
+border: 0px;
+border-radius: 50%;
+background-image: url(${ArrowIcon});
+background-repeat: no-repeat;
+background-position: center;
+margin-right: 50px;
+
+&:hover {
+  cursor: pointer;
+}
+`;
 
 export default CardDetail;

@@ -39,7 +39,7 @@ const LargeCard = ({ name, dailyData }) => {
         <Row gutter="16" type="flex" align="middle">
           <Col span="12">
             <LeftCol>
-              <WeatherIcon name={iconHelper(description)} width="140px" />
+              <WeatherIcon name={iconHelper(description)} width="auto" height="140px" />
               <div style={{ paddingLeft: '30px' }}>
                 <MainTemp>
                   { mainTemp }
@@ -121,8 +121,8 @@ const CardWrapper = styled.div`
 font-family: "Segoe UI Light";
 font-size: 16px;
 color: white;
-margin: 20px 0;
 border-radius: 10px;
+width: 70%;
 `;
 
 const CardHeader = styled.div`

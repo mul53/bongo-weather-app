@@ -5,22 +5,26 @@ import { CardWrapper, CardHeader, CardBody } from './miniCard';
 import bgImage from '../images/City_Illustration.svg';
 import addIcon from '../images/2-layers.svg';
 
-const AddCard = () => (
-	<CardWrapper style={{
-		backgroundImage: `url(${bgImage})`,
-		backgroundPosition: 'bottom',
-		backgroundSize: 'contain',
-		backgroundRepeat: 'no-repeat'
-	}}>
-		<CardHeader>
-			Add City
-		</CardHeader>
-		<CardBody>
-			<AddButton>
-			</AddButton>
-		</CardBody>
-	</CardWrapper>
-);
+const AddCard = (props) => {
+  const { toggleSearch } = props;
+
+  return (
+    <CardWrapper style={{
+      backgroundImage: `url(${bgImage})`,
+      backgroundPosition: 'bottom',
+      backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat',
+    }}
+    >
+      <CardHeader>
+      Add City
+      </CardHeader>
+      <CardBody>
+        <AddButton onClick={toggleSearch} />
+      </CardBody>
+    </CardWrapper>
+  );
+};
 
 const AddButton = styled.button`
 width: 130px;
@@ -32,6 +36,10 @@ border: 0px;
 background-image: url(${addIcon});
 background-position: center;
 background-repeat: no-repeat;
+
+&:hover {
+  cursor: pointer;
+}
 `;
 
 export default AddCard;

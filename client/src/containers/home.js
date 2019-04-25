@@ -1,45 +1,47 @@
 import React, { Component } from 'react';
 import { Layout, Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import MiniCard from '../components/miniCard';
 import AddCard from '../components/addCard';
+import Search from './search';
+import { toggleSearchUI as toggleSearchUIAction } from '../actions/searchActionCreators';
+import { addCity as addCityAction } from '../actions/cityActionCreators';
 
 const { Content } = Layout;
 
 class Home extends Component {
   constructor() {
     super();
-    this.state = {
-      cities: ['ndola'],
-      data: [],
-    };
+    this.toggleSearch = this.toggleSearch.bind(this);
   }
 
   async componentDidMount() {
     try {
-      const response = await fetch('http://api.openweathermap.org/data/2.5/forecast?q=new york&units=metric&appid=849648ec9f395dbb3891efabbf3f3070');
-      const jsonData = await response.json();
+      const { addCity, cities } = this.props;
+      if (cities.length < 1) {
+        const response = await fetch('http://api.openweathermap.org/data/2.5/forecast?q=new york&units=metric&appid=849648ec9f395dbb3891efabbf3f3070');
+        const jsonData = await response.json();
 
-      const {
-        list,
-        city,
-        weather,
-      } = jsonData;
+        const { list, city, weather } = jsonData;
+        const data = Object.assign({}, list[0], city, weather);
 
-      const data = Object.assign({}, list[0], city, weather);
-
-      this.setState({
-        data: [data],
-      });
+        addCity(data);
+      }
     } catch (err) {
       console.log(err);
     }
   }
 
+  toggleSearch() {
+    const { toggleSearchUI } = this.props;
+    toggleSearchUI();
+  }
+
   render() {
-    const { data } = this.state;
-    const cards = data.map(({ main, name, weather }) => {
+    const { cities } = this.props;
+    const cards = cities && cities.map(({ main, name, weather }) => {
       const { main: weatherDescription } = weather[0];
       const { temp: mainTemp, temp_min: minTemp, temp_max: maxTemp } = main;
 
@@ -63,13 +65,32 @@ class Home extends Component {
       <Content style={{ padding: '0 50px' }}>
         <Row gutter={30} type="flex">
           { cards }
-          <Col span={6}>
-            <AddCard />
-          </Col>
+          { (cities.length < 4)
+            ? (
+              <Col span={6}>
+                <AddCard toggleSearch={this.toggleSearch} />
+              </Col>
+            )
+            : undefined
+          }
         </Row>
+        <Search />
       </Content>
     );
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  cities: state.city.cities,
+});
+
+const mapDispatchToProps = dispatch => ({
+  toggleSearchUI() {
+    return dispatch(toggleSearchUIAction());
+  },
+  addCity(city) {
+    return dispatch(addCityAction(city));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
